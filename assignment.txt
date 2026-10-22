@@ -1,27 +1,19 @@
 EEE 497 - Lab 02
 Estimate a tone's frequency
 
-The Pluto SDR is transmitting something for this session, 
-tune the receiver to 433 MHz to see it.
+The Pluto SDR is transmitting something for this session, tune the receiver to 433 MHz to see it.
 
 Record the IQ, then process the file.
 
 Ubuntu:
-
     rtl_sdr -f 433000000 -s 2048000 -g 35 -n 8192000 capture.iq
 
 Windows, from the folder that contains rtl_sdr.exe:
-
     rtl_sdr.exe -f 433000000 -s 2048000 -g 35 -n 8192000 capture.iq
 
 Two signals are present in the IQ recording:
-- An always-on pilot tone. This is one of the signals to measure. It is the
-  reference frequency, and it cancels the Pluto frequency drift and the
-  RTL-SDR frequency drift.
-- 8 short pulses in a row, on the positive side of the pilot. The pattern
-  repeats, with a longer silence between each loop. Use GQRX or SDR# to see
-  its form. Try different FFT sizes and window selections (rectangular, Hann,
-  and others).
+- An always-on pilot tone. This is one of the signals to measure. It is the reference frequency, and it cancels the Pluto frequency drift and the RTL-SDR frequency drift.
+- 8 short pulses in a row, on the positive side of the pilot. The pattern repeats, with a longer silence between each loop. Use GQRX or SDR# to see its form. Try different FFT sizes and window selections (rectangular, Hann, and others).
 
 Goals:
 
@@ -29,8 +21,7 @@ Goals:
 - Find each pulse in time and in frequency.
 - Measure each pulse frequency minus the pilot.
 
-functions_library.py has the pieces this measurement needs. Putting them
-together is the main body of the work.
+functions_library.py has the pieces this measurement needs. Putting them together is the main body of the work.
 
 Report, for each of the 8 pulses, in order of appearance:
 
